@@ -30,5 +30,19 @@ async def joined(ctx, member: discord.Member):
     """Says when a member joined."""
     await ctx.send(f'{member.name} joined {discord.utils.format_dt(member.joined_at)}')
 
+@bot.command()
+async def guess(ctx, count:int):
+    answer = random.randint(1,10)
+    if count == answer:
+        await ctx.send('Right!')
+    else:
+        await ctx.send(f'Nah, no! The answer was {answer}.')
 
-bot.run("Токен")
+@bot.command()
+async def repeat(ctx, times: int, content='repeating...'):
+    """Repeats a message multiple times."""
+    for i in range(times):
+        await ctx.send(content)
+
+
+bot.run("Token")
